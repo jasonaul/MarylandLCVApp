@@ -2,18 +2,13 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useOrganization } from '../context/OrganizationContext';
 
-const HomeScreen = () => {
-  const { isC3 } = useOrganization();
+console.log('HomeScreen.js is being executed');
 
+const HomeScreen = () => {
+  console.log('HomeScreen is rendering');
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>
-        Welcome to {isC3 ? 'Maryland LCV Education Fund' : 'Maryland LCV'}
-      </Text>
-      <Text style={styles.subtitle}>
-        {isC3 ? '501(c)(3) Organization' : '501(c)(4) Organization'}
-      </Text>
-      {/* Add more content here */}
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Welcome to Maryland LCV Education Fund</Text>
     </View>
   );
 };

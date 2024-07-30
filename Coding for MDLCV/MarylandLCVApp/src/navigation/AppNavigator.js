@@ -2,16 +2,18 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-// Import your screen components here (we'll create these later)
 import HomeScreen from '../screens/HomeScreen';
 import VotingInfoScreen from '../screens/VotingInfoScreen';
 import TakeActionScreen from '../screens/TakeActionScreen';
 import ResourcesScreen from '../screens/ResourcesScreen';
 import MoreScreen from '../screens/MoreScreen';
+import HamburgerMenu from '../components/HamburgerMenu';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 function MainTabNavigator() {
   return (
@@ -28,14 +30,10 @@ function MainTabNavigator() {
 function AppNavigator() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen 
-          name="Main" 
-          component={MainTabNavigator} 
-          options={{ headerShown: false }}
-        />
-        {/* Add other stack screens here */}
-      </Stack.Navigator>
+      <Drawer.Navigator drawerContent={props => <HamburgerMenu {...props} />}>
+        <Drawer.Screen name="Main" component={MainTabNavigator} />
+        {/* Add other screens here */}
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }
